@@ -154,7 +154,34 @@
 
         }
 
-        //test getAll test deleteAll addStudents
+        function testGetStudents()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to Math";
+            $number = "MATH100";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
+
+            $name2 = "Micah";
+            $id2 = null;
+            $enrollment_date = "2015-09-13";
+            $test_student = new Student($name2, $enrollment_date, $id2);
+            $test_student->save();
+
+            $name3 = "Phil";
+            $id3 = null;
+            $enrollment_date2 = "2015-09-03";
+            $test_student2 = new Student($name3, $enrollment_date2, $id3);
+            $test_student2->save();
+
+            //Act
+            $test_course->addStudent($test_student);
+            $test_course->addStudent($test_student2);
+
+            //Assert
+            $this->assertEquals($test_course->getStudents(), [$test_student, $test_student2]);
+        }
     }
 
 

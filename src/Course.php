@@ -60,10 +60,15 @@
                 $id = $returned_student[0]['id'];
                 $name = $returned_student[0]['name'];
                 $enrollment = $returned_student[0]['enrollment'];
-                $new_student = new Student($id, $name, $enrollment_date);
+                $new_student = new Student($name, $enrollment, $id);
                 array_push($students, $new_student);
             }
             return $students;
+        }
+
+        function addStudent($student)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO students_courses (student_id, course_id) VALUES ({$student->getId()}, {$this->getId()});");
         }
 
         static function getAll()
@@ -84,6 +89,9 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM courses;");
         }
+
+        //add find
+
 
 
     }
