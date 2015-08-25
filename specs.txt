@@ -1,0 +1,9 @@
+Road map
+    Database = registry
+    1. Create table for students  name & date of enrollment
+    2. Create class for Student
+    3. Write tests for Student class
+        - Setting/Getting
+        - Saving to & from DB
+        - Deleting students
+        - Update students
