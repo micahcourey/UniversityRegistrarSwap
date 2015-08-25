@@ -174,9 +174,27 @@
             $this->assertEquals($test_course, $result);
         }
 
-        //test and method for Find
+        function testAddStudent()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to Math";
+            $number = "MATH100";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
 
-        //test for addStudent
+            $name2 = "Micah";
+            $id2 = null;
+            $enrollment_date = "2015-09-13";
+            $test_student = new Student($name2, $enrollment_date, $id2);
+            $test_student->save();
+
+            //Act
+            $test_course->addStudent($test_student);
+
+            //Assert
+            $this->assertEquals($test_course->getStudents(), [$test_student]);
+        }
 
         //test/method for update
 
