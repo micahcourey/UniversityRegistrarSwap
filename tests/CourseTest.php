@@ -151,8 +151,37 @@
             //Assert
             $result = Course::getAll();
             $this->assertEquals([], $result);
-
         }
+
+        function testFind()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to History";
+            $number = "HIST101";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
+
+            $name2 = "Intro to Math";
+            $number2 = "MATH101";
+            $test_course2 = new Course($name2, $number2, $id);
+            $test_course2->save();
+
+            //Act
+            $result = Course::find($test_course->getId());
+
+            //Assert
+            $this->assertEquals($test_course, $result);
+        }
+
+        //test and method for Find
+
+        //test for addStudent
+
+        //test/method for update
+
+        //test/method for deleteCourse
+
 
         function testGetStudents()
         {
