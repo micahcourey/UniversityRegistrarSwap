@@ -71,6 +71,11 @@
             $GLOBALS['DB']->exec("INSERT INTO students_courses (student_id, course_id) VALUES ({$student->getId()}, {$this->getId()});");
         }
 
+        function update($field, $value)
+        {
+            $GLOBALS['DB']->exec("UPDATE courses SET {$field} = '{$value}' WHERE id = {$this->getId()};");
+        }
+
         static function getAll()
         {
             $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses;");

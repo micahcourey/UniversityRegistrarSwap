@@ -196,6 +196,27 @@
             $this->assertEquals($test_course->getStudents(), [$test_student]);
         }
 
+        function testUpdate()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to Math";
+            $number = "MATH400";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
+
+            $field = "course_name";
+            $new_value = "MATH101";
+
+            //Act
+            $test_course->update($field, $new_value);
+
+            //Assert
+            $courses = Course::getAll();
+            $result = $courses[0]->getCourseName();
+            $this->assertEquals($new_value, $result);
+        }
+
         //test/method for update
 
         //test/method for deleteCourse
