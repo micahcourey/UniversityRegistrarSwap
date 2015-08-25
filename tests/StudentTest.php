@@ -23,8 +23,8 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
-            $test_student = new Student($name, $enroll_date);
+            $enrollment = "8/25/2015";
+            $test_student = new Student($name, $enrollment);
             $new_name = "Babs";
 
             //Act
@@ -39,8 +39,8 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
-            $test_student = new Student($name, $enroll_date);
+            $enrollment = "8/25/2015";
+            $test_student = new Student($name, $enrollment);
 
             //Act
             $result = $test_student->getName();
@@ -53,13 +53,13 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
-            $test_student = new Student($name, $enroll_date);
+            $enrollment = "8/25/2015";
+            $test_student = new Student($name, $enrollment);
             $new_date = "9/18/2015";
 
             //Act
-            $test_student->setEnrollDate($new_date);
-            $result = $test_student->getEnrollDate();
+            $test_student->setEnrollment($new_date);
+            $result = $test_student->getEnrollment();
 
             //Assert
             $this->assertEquals($new_date, $result);
@@ -69,23 +69,23 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
-            $test_student = new Student($name, $enroll_date);
+            $enrollment = "8/25/2015";
+            $test_student = new Student($name, $enrollment);
 
             //Act
-            $result = $test_student->getEnrollDate();
+            $result = $test_student->getEnrollment();
 
             //Assert
-            $this->assertEquals($enroll_date, $result);
+            $this->assertEquals($enrollment, $result);
         }
 
         function test_getId()
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
+            $enrollment = "8/25/2015";
             $id = 1;
-            $test_student = new Student($name, $enroll_date, $id);
+            $test_student = new Student($name, $enrollment, $id);
 
             //Act
             $result = $test_student->getId();
@@ -98,8 +98,8 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "2015-09-18";
-            $test_student = new Student($name, $enroll_date);
+            $enrollment = "2015-09-18";
+            $test_student = new Student($name, $enrollment);
             $test_student->save();
 
             //Act
