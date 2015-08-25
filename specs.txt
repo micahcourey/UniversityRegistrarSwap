@@ -15,3 +15,6 @@ Road map
         - Saving to & from DB
         - Deleting courses
         - Update courses
+
+    6. Create joined table students_courses
+    
