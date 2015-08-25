@@ -216,7 +216,26 @@
             $this->assertEquals([], $test_course->getStudents());
         }
 
-        //addCourse
+        function testAddCourse()
+        {
+            //Arrange
+            $id = null;
+            $name = 'Micah';
+            $enrollment = '2015-03-05';
+            $test_student = new Student($name, $enrollment, $id);
+            $test_student->save();
+
+            $course_name = 'Intro to History';
+            $number = 'HIST100';
+            $test_course = new Course($course_name, $number, $id);
+            $test_course->save();
+
+            //Act
+            $test_student->addCourse($test_course);
+
+            //Assert
+            $this->assertEquals($test_student->getCourses(), [$test_course]);
+        }
 
 
 
