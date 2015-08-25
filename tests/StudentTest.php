@@ -1,9 +1,24 @@
 <?php
 
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
+    */
+
     require_once "src/Student.php";
+
+    $server = 'mysql:host=localhost;dbname=registry_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class StudentTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Student::deleteAll();
+        }
+
         function test_setName()
         {
             //Arrange
@@ -83,14 +98,15 @@
         {
             //Arrange
             $name = "Joleen";
-            $enroll_date = "8/25/2015";
+            $enroll_date = "2015-09-18";
             $test_student = new Student($name, $enroll_date);
-
-            //Act
             $test_student->save();
 
+            //Act
+            $result = Student::getAll();
+
             //Assert
-            $this->assertEquals($test_student, Student::getAll());
+            $this->assertEquals($test_student, $result[0]);
         }
 
     }
