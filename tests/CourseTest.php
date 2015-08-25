@@ -110,6 +110,50 @@
             $this->assertEquals($test_course, $result[0]);
         }
 
+        function testGetAll()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to Math";
+            $number = "MATH100";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
+
+            $name2 = "Intro to History";
+            $number2 = "HIST100";
+            $test_course2 = new Course($name2, $number2, $id);
+            $test_course2->save();
+
+            //Act
+            $result = Course::getAll();
+
+            //Assert
+            $this->assertEquals([$test_course, $test_course2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $id = null;
+            $name = "Intro to Math";
+            $number = "MATH100";
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
+
+            $name2 = "Intro to History";
+            $number2 = "HIST101";
+            $test_course2 = new Course($name2, $number2, $id);
+            $test_course2->save();
+
+            //Act
+            Course::deleteAll();
+
+            //Assert
+            $result = Course::getAll();
+            $this->assertEquals([], $result);
+
+        }
+
         //test getAll test deleteAll addStudents
     }
 
