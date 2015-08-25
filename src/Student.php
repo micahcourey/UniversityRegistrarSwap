@@ -47,6 +47,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function update($field, $new_value)
+        {
+            $GLOBALS['DB']->exec("UPDATE students SET {$field} = '{$new_value}' WHERE id = {$this->getId()};");
+        }
+
         //Return all students
         static function getAll()
         {

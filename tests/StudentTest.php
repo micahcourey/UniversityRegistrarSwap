@@ -173,6 +173,27 @@
             $this->assertEquals($test_student, $result);
         }
 
+        function testUpdate()
+        {
+            //Arrange
+            $id = null;
+            $name = "Micah";
+            $enrollment = "2015-08-30";
+            $test_student = new Student($name, $enrollment, $id);
+            $test_student->save();
+
+            $field = "name";
+            $new_name = "Phil";
+
+            //Act
+            $test_student->update($field, $new_name);
+
+            //Assert
+            $students = Student::getAll();
+            $result = $students[0]->getName();
+            $this->assertEquals($new_name, $result);
+        }
+
 
 
     }
