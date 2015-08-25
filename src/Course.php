@@ -76,6 +76,12 @@
             $GLOBALS['DB']->exec("UPDATE courses SET {$field} = '{$value}' WHERE id = {$this->getId()};");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM courses WHERE ID = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM students_courses WHERE course_id = {$this->getId()};");
+        }
+
         static function getAll()
         {
             $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses;");
@@ -107,9 +113,6 @@
             }
             return $found_course;
         }
-
-
-
     }
 
 
