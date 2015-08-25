@@ -52,6 +52,17 @@
             $GLOBALS['DB']->exec("UPDATE students SET {$field} = '{$new_value}' WHERE id = {$this->getId()};");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM students WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM students_courses WHERE student_id = {$this->getId()};");
+        }
+
+        function addCourse($course)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO students_courses (student_id, course_id) VALUES ({$this->getId()}, {$course->getId()});");
+        }
+
         //Return all students
         static function getAll()
         {

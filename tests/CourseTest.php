@@ -110,7 +110,7 @@
             $this->assertEquals($test_course, $result[0]);
         }
 
-        //test getAll test deleteAll
+        //test getAll test deleteAll addStudents
     }
 
 
