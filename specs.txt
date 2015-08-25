@@ -7,3 +7,11 @@ Road map
         - Saving to & from DB
         - Deleting students
         - Update students
+
+
+    4. Create class for Course
+    5. Write tests for Course class
+        - Setting/Getting
+        - Saving to & from DB
+        - Deleting courses
+        - Update courses
